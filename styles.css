@@ -1,0 +1,1292 @@
+/*Import font*/
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+/*Reset CSS*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+}
+
+/*Color variables*/
+:root{
+    --primary-color: white;
+    --secondary-color: black;
+    --neutral: rgb(36, 36, 36);
+    --neutral2: rgb(61, 61, 61);
+    --neutral-light: rgb(180, 180, 180);
+    --neutral-light2: rgb(220, 220, 220);
+    --link-active: rgba(255, 255, 255, 0.2);    
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/*Global styles*/
+body{
+    background-color: var(--primary-color);
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    overflow-x: hidden;
+}
+
+/* Contenedor general */
+body {
+  scrollbar-width: thin; /* Para Firefox */
+  scrollbar-color: var(--secondary-color) var(--neutral); /* Para Firefox */
+}
+
+/* Para Chrome, Edge, Safari */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--neutral);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--neutral-light2);
+  border-radius: 10px;
+}
+
+span{
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    padding: 0 15px;
+}
+
+h2{
+    font-size: 40px;
+    font-weight: 800;
+}
+
+a{
+    text-decoration: none;
+    color: var(--secondary-color);
+    cursor: pointer;
+}
+
+a:hover{
+    cursor: pointer;
+}
+
+button{
+    width: 130px;
+    height: 40px;
+    font-weight: 500;
+    font-size: 15px;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    transition-duration: .3s;
+}
+
+button:hover{
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.103);
+}
+
+button::before {
+    width: 130px;
+    height: 130px;
+    position: absolute;
+    content: "";
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    left: -100%;
+    top: 0;
+    transition-duration: .3s;
+    mix-blend-mode: difference;
+}
+
+button:hover::before {
+    transition-duration: .3s;
+    transform: translate(100%,-50%);
+    border-radius: 0;
+}
+
+/*Header*/
+.header-container{
+    position: fixed;
+    width: 100%;
+    height: 100px;
+    background-color: var(--primary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    left: 0;
+}
+
+header{
+    width: 70%;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    z-index: 99;
+}
+
+header .link-cta{
+    z-index: 99;
+}
+
+#header-container.scrolled {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+header svg{
+    display: none;
+    z-index: 99;
+}
+
+header .mobile-logo{
+    display: none;
+    z-index: 4;
+}
+
+header .header-logo{
+    width: 160px;
+}
+
+header ul{
+    display: flex;
+}
+
+header ul li{
+    list-style: none;
+    margin: 0 15px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.link.active{
+    border-bottom: 2px solid var(--secondary-color);
+}
+
+.link {
+  position: relative;
+  text-decoration: none;
+  color: inherit;
+  padding-bottom: 4px;
+  transition: color 0.3s;
+}
+
+.link::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: var(--secondary-color);
+  transition: width 0.3s ease;
+}
+
+.link:hover::after {
+  width: 100%;
+}
+
+header ul li:hover{
+    cursor: pointer;
+}
+
+.link-cta{
+    width: 130px;
+    height: 40px;
+    font-weight: 500;
+    font-size: 15px;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    transition-duration: .3s;
+}
+
+.link-cta:hover{
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.103);
+}
+
+.link-cta::before {
+    width: 130px;
+    height: 130px;
+    position: absolute;
+    content: "";
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    left: -100%;
+    top: 0;
+    transition-duration: .3s;
+    mix-blend-mode: difference;
+}
+
+.link-cta:hover::before {
+    transition-duration: .3s;
+    transform: translate(100%,-50%);
+    border-radius: 0;
+}
+
+/*************
+    INICIO
+**************/
+/*Container*/
+.container{
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+/*Welcome section*/
+.welcome-section{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    background-image: url('img/portada.png');
+    background-size: 37% 100%;
+    background-position: right top;
+    background-repeat: no-repeat;
+    min-height: 640px;
+}
+
+section .welcome-box{
+    width: 45%;
+    height: 100%;
+    position: relative;
+    left: 15%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+section .welcome-box h6{
+    margin-bottom: 20px;
+    font-weight: 600;
+    font-size: 20px;
+    color: var(--neutral);
+}
+
+section .welcome-box h1{
+    font-size: 60px;
+    font-weight: 900;
+}
+
+section .welcome-box .welcome-description{
+    margin-top: 20px;
+    width: 70%;
+}
+
+section .welcome-box .welcome-description p{
+    font-weight: 500;
+    color: var(--neutral);
+}
+
+section .welcome-box .welcome-button-cta-box{
+    margin-top: 30px;
+    margin-bottom: 230px;
+}
+
+section .welcome-box .welcome-button-cta-box button{
+    width: 330px;
+    font-size: 18px;
+    height: 50px;
+}
+
+section .welcome-box .welcome-button-cta-box button::before{
+    width: 330px;
+}
+
+section .welcome-box .welcome-button-cta-box button svg{
+    width: 25px;
+    stroke: var(--primary-color);
+    margin-left: 10px;
+}
+
+.presupuesto-form{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--primary-color);
+    padding: 60px;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.95);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.presupuesto-form.show {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.close-btn{
+    position: absolute;
+    top: 0;
+    right: 20px;
+    font-size: 50px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--secondary-color);
+    width: fit-content;
+    height: fit-content;
+    padding: 0;
+    margin: 0;
+    display: block;
+    font-weight: 100;
+}
+
+.close-btn:hover{
+    background-color: transparent;
+    box-shadow: none;
+    margin: 0;
+    padding: 0;
+}
+
+.close-btn::before{
+    content: none;
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+}
+
+.presupuesto-form p{
+    color: var(--neutral2);
+}
+
+.presupuesto-form .form-group{
+    margin: 20px 0;
+}
+
+.presupuesto-form .form-group label{
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.presupuesto-form .form-group label input{
+    padding: 10px;
+    font-size: 16px;
+    color: var(--neutral2);
+    width: 100%;
+    border: 1px solid black;
+}
+
+.form-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5); /* o rgba(0, 0, 0, 0.5) para opacidad */
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.form-overlay.show {
+    opacity: 1;
+}
+
+section .welcome-box .welcome-advantages{
+    position: absolute;
+    bottom: 0%;
+    width: 120%;
+    height: 250px;
+    background-color: var(--secondary-color);
+    border: 10px solid var(--primary-color);
+    border-left: 0;
+    display: flex;
+}
+
+section .welcome-box .welcome-advantages .scroll-text-box{
+    width: 10%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+section .welcome-box .welcome-advantages .scroll-text-box p{
+    rotate: -90deg;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--neutral-light);    
+}
+
+section .welcome-box .welcome-advantages .scroll-text-box p svg{
+    width: 20px;
+    height: 20px;
+    stroke: var(--neutral-light);
+    margin-right: 5px;
+}
+
+section .welcome-box .welcome-advantages .characteristic{
+    width: 30%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px;
+}
+
+section .welcome-box .welcome-advantages .characteristic .characteristic-icon-box{
+    width: 100%;
+    height: 35%;
+}
+
+section .welcome-box .welcome-advantages .characteristic .characteristic-icon-box svg{
+    width: 60px;
+    height: 100%;
+    fill: var(--primary-color);
+}
+
+section .welcome-box .welcome-advantages .characteristic .characteristic-icon-box .compromiso-logo{
+    width: 55px;
+}
+
+section .welcome-box .welcome-advantages .characteristic .characteristic-icon-box .atencion-logo{
+    width: 55px;
+}
+
+section .welcome-box .welcome-advantages .characteristic .characteristic-content-box{
+    width: 100%;
+    height: 65%;
+}
+
+section .welcome-box .welcome-advantages .characteristic .characteristic-content-box h6{
+    font-size: 14px;
+    color: var(--primary-color);
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+section .welcome-box .welcome-advantages .characteristic .characteristic-content-box p{
+    font-size: 14px;
+    color: var(--neutral-light);
+}
+
+/*Home - Services*/
+.services-box {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.services-box .services-grid-container {
+  width: 70%;
+  height: 80%;
+  display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+}
+
+.services-box .services-grid-container div{
+    background-color: var(--neutral-light2);
+    padding: 20px;
+}
+
+.div1 { 
+    grid-area: 1 / 1 / 3 / 4;
+    background-image: url('img/reforma.jpg'); 
+    position: relative;
+    display: flex;
+    align-items: end;
+}
+
+.div1::before{
+    content: '';
+    background: linear-gradient(to top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.div1 h3{
+    color: var(--primary-color);
+    z-index: 1;
+    font-size: 30px;
+}
+
+.services-box .services-grid-container .div2 { 
+    grid-area: 1 / 4 / 3 / 6;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: var(--secondary-color);
+}
+
+.services-box .services-grid-container .div2 h2{
+    font-size: 40px;
+    font-weight: 800;
+    color: var(--primary-color);
+}
+
+.services-box .services-grid-container .div2 svg{
+    width: 60px;
+    height: 60px;
+    fill: var(--primary-color);
+}
+
+.services-box .services-grid-container .div2 a{
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+.services-box .services-grid-container .div2 a svg{
+    fill: var(--secondary-color);
+    width: 22px;
+    margin-left: 5px;
+}
+
+.div3 { 
+    grid-area: 3 / 1 / 6 / 3;
+    background-image: url('img/interior.jpg'); 
+    position: relative;
+    display: flex;
+    align-items: end;
+}
+
+.div3::before{
+    content: '';
+    background: linear-gradient(to top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.div3 h3{
+    color: var(--primary-color);
+    z-index: 1;
+    font-size: 30px;
+}
+
+.div4 { 
+    grid-area: 3 / 3 / 6 / 6; 
+    background-image: url('img/obras.jpg'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    display: flex;
+    align-items: end;
+}
+
+.div4::before{
+    content: '';
+    background: linear-gradient(to top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.div4 h3{
+    color: var(--primary-color);
+    z-index: 1;
+    font-size: 30px;
+}
+
+.proyectos-box{
+    width: 100%;
+    padding: 100px 0;
+    height: fit-content;
+    background: var(--secondary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.proyectos-box .proyectos-container{
+    width: 70%;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: var(--primary-color);
+    position: relative;
+}
+
+.proyectos-container::before {
+    content: '';
+    background: linear-gradient(to left, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 10%);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.proyectos-box .proyectos-container .proyectos-title-box{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 40px;
+}
+
+.proyectos-box .proyectos-container .proyectos-title-box h2{
+    font-size: 40px;
+    font-weight: 800;
+    margin-bottom: 20px;
+}
+
+.proyectos-box .proyectos-container .proyectos-title-box p{
+    width: 60%;
+    color: var(--neutral-light2);
+}
+
+.proyectos-box .proyectos-container .proyectos-content-box{
+    width: 100%;
+    display: flex;
+    overflow: hidden;
+    flex-wrap: nowrap;
+}
+
+.proyectos-box .proyectos-container .proyectos-content-box .proyecto-box{
+    width: 320px;
+    height: fit-content;
+    margin: 20px;
+    background-color: var(--primary-color);
+    flex-shrink: 0;
+    padding: 20px;
+    color: var(--secondary-color);
+    position: relative;
+}
+
+.proyectos-box .proyectos-container .proyectos-content-box .proyecto-box img{
+    width: 100%;
+    margin-bottom: 20px
+}
+
+.proyectos-box .proyectos-container .proyectos-content-box .proyecto-box h4{
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.proyectos-box .proyectos-container .proyectos-content-box .proyecto-box p{
+    color: var(--neutral2);
+    font-weight: 600;
+}
+
+.proyectos-box .proyectos-container .proyectos-content-box .proyecto-box a{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+.proyectos-box .proyectos-container .proyectos-content-box .proyecto-box a svg{
+    width: 22px;
+    height: 22px;
+    stroke: var(--primary-color);
+    margin-left: 10px;
+}
+
+.proyectos-box .proyectos-container .proyectos-content-box .proyecto1{
+    margin-left: 0;
+}
+
+.nosotros-box{
+    width: 100%;
+    height: fit-content;
+    padding: 100px 0;
+    background: var(--primary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nosotros-box .nosotros-container{
+    width: 70%;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    color: var(--secondary-color);
+}
+
+.nosotros-box .nosotros-container .nosotros-title-box h2{
+    margin-bottom: 20px;
+}
+
+.nosotros-box .nosotros-container .nosotros-content-box{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nosotros-box .nosotros-container .nosotros-content-box video{
+    width: 70%;
+    height: fit-content;
+}
+
+.nosotros-box .nosotros-container .nosotros-content-box video source{
+    width: 100%;
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nosotros-box .nosotros-container .nosotros-content-box .pablo-photo{
+    width: 30%;
+    height: 510px;
+    background-image: url('img/padre.webp');
+    background-size: cover;
+    background-position: center;
+    margin: 20px;
+    display: flex;
+    align-items: end;
+    padding: 40px;
+    position: relative;
+}
+
+.nosotros-box .nosotros-container .nosotros-content-box .pablo-photo::before{
+    content: '';
+    background: linear-gradient(to top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.nosotros-box .nosotros-container .nosotros-content-box .pablo-photo a{
+    color: var(--secondary-color);
+    background-color: var(--primary-color);
+    z-index: 1;
+}
+
+.nosotros-box .nosotros-container .nosotros-content-box .pablo-photo a svg{
+    fill: var(--secondary-color);
+    width: 22px;
+    margin-left: 5px;
+}
+
+.contacto-box{
+    width: 100%;
+    height: fit-content;
+    padding: 200px 0;
+    background: var(--neutral);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('img/contacto-fondo.svg');
+    background-size: cover;
+    background-position: center;
+    background-position: 100% 60%;
+    position: relative;
+}
+
+.contacto-box::before{
+    content: '';
+    background: linear-gradient(to top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 80%);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.contacto-box .contacto-container{
+    width: 70%;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: var(--secondary-color);
+}
+
+.contacto-box .contacto-container h2{
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 40px;
+}
+
+.contacto-box .contacto-container a{
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    width: 140px;
+}
+
+.contacto-box .contacto-container a::before{
+    width: 140px;
+}
+
+
+.contacto-box .contacto-container a svg{
+    width: 22px;
+    height: 22px;
+    stroke: var(--secondary-color);
+    margin-left: 5px;
+}
+
+footer{
+    width: 100%;
+    height: 400px;
+    background-color: var(--secondary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+footer .footer-container{
+    width: 70%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--primary-color);
+}
+
+footer .footer-container div{
+    width: 25%;
+    height: 100%;
+    padding: 40px;
+}
+
+footer .footer-container div h5{
+    font-size: 20px;
+}
+
+footer .footer-container a{
+    color: var(--neutral-light);
+    font-weight: 500;
+}
+
+footer .footer-container li{
+    list-style: none;
+    margin: 15px 0;
+}
+
+footer .footer-container .logo-box img{
+    width: 70%;
+    border: 5px solid var(--primary-color);
+}
+
+footer .footer-container .social-links ul{
+    display: flex;
+}
+
+footer .footer-container .social-links svg{
+    width: 40px;
+    height: 40px;
+    padding: 5px;
+    background-color: var(--primary-color);
+    margin-right: 10px;
+    border-radius: 5px;
+}
+
+footer .footer-container .contact-links li{
+    display: flex;
+    align-items: center;
+}
+
+footer .footer-container .contact-links svg{
+    width: 25px;
+    height: 25px;
+    fill: var(--neutral-light);
+    stroke: var(--neutral-light);
+    margin-right: 5px;
+}
+
+footer p{
+    color: var(--neutral-light);
+    margin-bottom: 20px;
+}
+
+/*Home responsive mobile*/
+@media screen and (max-width: 767px){
+    .header-container{
+        width: 100%;
+        height: 90px;
+        position: fixed;
+    }
+    
+    header{
+        width: 100%;
+        height: 90px;
+        align-items: start;
+        padding-top: 20px;
+        background-color: var(--primary-color);
+    }
+
+    header .link-cta{
+        display: none;
+    }
+
+    .links {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        list-style: none;
+        width: 100%;
+        transform: translateY(-100%);
+        opacity: 0;
+        pointer-events: none;
+        transition: transform 0.4s ease, opacity 0.4s ease;
+        border-top: 1px solid var(--neutral-light2);
+        background-color: var(--primary-color);
+        z-index: 4;
+    }
+
+    .links.show {
+    transform: translateY(70px);
+    opacity: 1;
+    pointer-events: all;
+    }
+
+    .link{
+        color: var(--secondary-color);
+        margin: 20px;
+        font-size: 20px;
+        display: flex;
+        justify-content: center;
+        z-index: 4;
+    }
+
+    header svg{
+        padding: 5px;
+        display: block;
+        width: 40px;
+        height: 40px;
+        margin-right: 20px;
+        cursor: pointer;
+        stroke: var(--secondary-color);
+        margin-top: 5px
+    }
+
+    header .mobile-logo{
+        width: 50px;
+        height: 50px;
+        display: block;
+        margin-left: 10px;
+    }
+
+    header img{
+        display: none;
+    }
+
+    header button{
+        display: none;
+    }
+
+    span{
+        background-color: var(--primary-color);
+        color: var(--secondary-color);
+        padding: 0 10px;
+    }
+
+    .welcome-section{
+        background-size: 100%;
+        background-position: center top;
+    }
+    
+    section .welcome-box{
+        width: 100%;
+        left: 0;
+        padding: 20px;
+        height: fit-content;
+    }
+
+    section .welcome-box h6{
+        color: var(--neutral-light2);
+        margin-top: 100px;
+    }
+
+    section .welcome-box h1{
+        font-size: 36px;
+        color: var(--primary-color);
+        font-weight: 800;
+    }
+
+    section .welcome-box .welcome-description{
+        width: 100%;
+    }
+
+    section .welcome-box .welcome-description p{
+        color: var(--neutral-light2);
+        font-size: 15px;
+    }
+
+    section .welcome-box .welcome-button-cta-box{
+        margin-bottom: 60px;
+    }
+
+    section .welcome-box .welcome-button-cta-box button{
+        background-color: var(--primary-color);
+        color: var(--secondary-color);
+        border: none;
+        outline: none;
+        height: 40px;
+        width: 310px;
+        font-size: 16px;
+    }
+
+  section .welcome-box .welcome-button-cta-box button::before{
+    width: 310px;
+}
+
+    section .welcome-box .welcome-button-cta-box button:active{
+        border: none;
+        outline: none;
+    }
+
+    section .welcome-box .welcome-button-cta-box button svg{
+        stroke: var(--secondary-color);
+    }
+
+    section .welcome-box .welcome-advantages{
+        width: 100%;
+        height: fit-content;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        border: 10px solid var(--primary-color);
+    }
+
+    section .welcome-box .welcome-advantages .scroll-text-box{
+        display: none;
+    }
+
+    section .welcome-box .welcome-advantages .characteristic{
+        width: 100%;
+    }
+
+    .services-box{
+        height: fit-content;
+        margin-top: 360px;
+    }
+
+    .services-box .services-grid-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    height: auto;
+    width: 90%;
+  }
+
+  .div1, .div2, .div3, .div4 {
+    grid-area: auto !important;
+    height: 300px;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .div1{
+    order: 2;
+  }
+
+  .div2 {
+    order: 1;
+    height: auto;
+    padding: 20px;
+  }
+
+  .services-box .services-grid-container .div2 h2 {
+    font-size: 30px;
+    margin: 20px 0;
+  }
+
+  .div3{
+    order: 3;
+  }
+
+  .div4{
+    order: 4;
+    margin-bottom: 50px;
+  }
+}
+
+@media screen and (max-width: 767px) and (max-height: 700px){
+    section .welcome-box .welcome-button-cta-box{
+        margin-bottom: 40px;
+    }
+
+    .services-box{
+        height: fit-content;
+        margin-top: 500px;
+    }
+}
+
+/*Home responsive other screens*/
+@media screen and (min-width: 1110px) and (max-width: 1355px) {
+
+   section .welcome-box h6{
+    font-size: 18px; 
+   } 
+
+  section .welcome-box h1 {
+    font-size: 50px;
+  }
+
+  section .welcome-box .welcome-description{
+    width: 90%;
+  }
+
+  section .welcome-box .welcome-description p{
+    font-size: 16px;
+  }
+
+  section .welcome-box .welcome-advantages{
+    width: 130%;
+  }
+
+  section .welcome-box .welcome-advantages .characteristic .characteristic-content-box p{
+    font-size: 12px;
+  }
+}
+
+@media screen and (min-width: 767px) and (max-width: 1109px){
+    header{
+        width: 90%;
+    }
+
+    header ul li{
+        font-size: 14px;
+        margin: 0 10px;
+    }
+
+    .welcome-section{
+        background-size: 50% 100%;
+    }
+
+    section .welcome-box{
+        left: 5%;
+    }
+
+    section .welcome-box h6{
+    font-size: 16px; 
+   } 
+
+    section .welcome-box h1 {
+    font-size: 40px;
+  }
+
+  section .welcome-box .welcome-description{
+    width: 90%;
+  }
+
+  section .welcome-box .welcome-description p{
+    font-size: 14px;
+  }
+
+  section .welcome-box .welcome-advantages{
+    width: 180%;
+  }
+
+  section .welcome-box .welcome-advantages .characteristic .characteristic-content-box p{
+    font-size: 12px;
+  }
+
+  .services-box .services-grid-container{
+    width: 90%;
+  }
+
+  .services-box .services-grid-container .div2 h2{
+    font-size: 35px;
+  }
+}
+
+@media screen and (max-height: 820px) and (min-width: 768px) {
+    section .welcome-box h6{
+    font-size: 16px; 
+   } 
+
+  section .welcome-box h1 {
+    font-size: 40px;
+  }
+
+  section .welcome-box .welcome-description p{
+    font-size: 15px;
+  }
+
+  section .welcome-box .welcome-button-cta-box{
+    margin-bottom: 130px;
+  }
+
+  section .welcome-box .welcome-advantages{
+    width: 180%;
+    height: 210px;
+  }
+
+  section .welcome-box .welcome-advantages .characteristic .characteristic-content-box h6{
+    font-size: 13px;
+  }
+
+  section .welcome-box .welcome-advantages .characteristic .characteristic-content-box p{
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-height: 660px) and (min-width: 768px){
+
+    section .welcome-box h1 {
+    font-size: 35px;
+  }
+
+  section .welcome-box .welcome-description p{
+    font-size: 13px;
+  }
+
+  section .welcome-box .welcome-button-cta-box button{
+    height: 40px;
+    width: 310px;
+    font-size: 16px;
+  }
+
+  section .welcome-box .welcome-button-cta-box button::before{
+    width: 310px;
+}
+
+section .welcome-box .welcome-advantages{
+    width: 140%;
+  }
+
+  section .welcome-box .welcome-advantages .characteristic .characteristic-icon-box{
+    height: 20%;
+  }
+
+  section .welcome-box .welcome-advantages .characteristic .characteristic-icon-box svg{
+    width: 40px;
+    height: 40px;
+  }
+}
